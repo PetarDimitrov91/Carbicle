@@ -1,0 +1,23 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000C\u0000a\u0000r\u0000b\u0000i\u0000c\u0000l\u0000e\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PetarDimitrov91/Carbicle.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PetarDimitrov91/Carbicle/issues"
+  },
+  "homepage": "https://github.com/PetarDimitrov91/Carbicle#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2"
+  }
+}
