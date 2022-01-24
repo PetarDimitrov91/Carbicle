@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <title>{{title}}</title>
     <link href="/static/style/style.css" type="text/css" rel="stylesheet">
-    <link rel='shortcut icon' type='image/x-icon' href='/static/images/favicon.png'/>
+    <link rel='shortcut icon' type='image/x-icon' href='/static/images/favicon.ico'/>
+    <script src="/client/app.js" type="module"></script>
 </head>
 
 <body>
@@ -14,11 +15,11 @@
         <ul>
             <li><img class="logo" src="/static/images/logo.png"></li>
             <li><a href="/">Browse</a></li>
-            <li><a href="/create">Add a Cube</a></li>
+            <li><a href="/create">Post an announcement</a></li>
             <li><a href="/about">About</a></li>
         </ul>
     </header>
-    <main>
+    <main id="main">
         {{{body}}}
     </main>
 </div>

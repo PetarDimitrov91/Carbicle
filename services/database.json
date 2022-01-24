@@ -3,25 +3,13 @@
     "name": "Toyota Avensis 1.6i",
     "description": "Imported from Denmark. 203 000 km with full service history. No blemishes on the paint, well maintained interior, technically sound. Possible lease through leasing company or bank or barter for another car.",
     "imageUrl": "11642784212322196_2Z.jpg",
-    "price": 11900
-  },
-  "6476da65-f254": {
-    "name": "Subaru Legacy 2.0i 4x4",
-    "description": "202 800 km. Newly imported. Manual transmission. Petrol engine.",
-    "imageUrl": "11637411542178388_Nw.jpg",
-    "price": 3099
+    "price": 8500
   },
   "3ba2d888-1ce4": {
-    "name": "VW Golf GTI Club Sport 45",
+    "name": "VW Golf GTI",
     "description": "THE PRICE IS NON-NEGOTIABLE!!! Newly imported, 202 799 km, 90hp diesel. Manual transmission.",
-    "imageUrl": "11642697845129757_i2.jpg",
-    "price": 2699
-  },
-  "134lk8h6-3333": {
-    "name": "Mercedes Benz S 500",
-    "description": "The 2022 Mercedes-Benz S-class is as much a personal limo for the ultra-wealthy as it is a rolling showcase of the company's latest tech. ... Along with standard all-wheel drive, the S-class's effortless acceleration comes from a 429-hp straight-six (S500) or a 496-hp V-8 (S580).",
-    "imageUrl": "merc.jpg",
-    "price": 99000
+    "imageUrl": "golfVII.jpg",
+    "price": 25000
   },
   "d7dd8fds-d2g3": {
     "name": "Mercedes Benz S 500",
@@ -35,28 +23,28 @@
     "imageUrl": "audis8.jpg",
     "price": 89000
   },
-  "337e983b-b469": {
-    "name": "Kia Sorento",
-    "description": "The Sorento is a seven-seat SUV with a second-row bench seat and two third-row seats. All models with the turbocharged engine have middle-row captain's chairs that turn this crossover into a six-person vehicle. The first two rows offer ample head- and legroom, and it's easy to find a comfortable sitting position.",
-    "imageUrl": "kia.jpg",
-    "price": 45000
-  },
-  "b3889844-ff97": {
-    "name": "Kia Sorento",
-    "description": "The Sorento is a seven-seat SUV with a second-row bench seat and two third-row seats. All models with the turbocharged engine have middle-row captain's chairs that turn this crossover into a six-person vehicle. The first two rows offer ample head- and legroom, and it's easy to find a comfortable sitting position.",
-    "imageUrl": "kia.jpg",
-    "price": 45000
-  },
-  "0df50165-2c32": {
-    "name": "Kia Sorento",
-    "description": "The Sorento is a seven-seat SUV with a second-row bench seat and two third-row seats. All models with the turbocharged engine have middle-row captain's chairs that turn this crossover into a six-person vehicle. The first two rows offer ample head- and legroom, and it's easy to find a comfortable sitting position.",
-    "imageUrl": "kia.jpg",
-    "price": 45000
-  },
   "0040221f-0ad2": {
     "name": "Mercedes Benz G 63 AMG",
     "description": "The Mercedes-Benz G-Class, sometimes called G-Wagon (short for Geländewagen, \"terrain vehicle\"), is a four-wheel drive automobile manufactured by Magna Steyr (formerly Steyr-Daimler-Puch) in Austria and sold by Mercedes-Benz. ... The G-Wagon is characterised by its boxy styling and body-on-frame construction.",
     "imageUrl": "Gklass.jpg",
     "price": 125000
+  },
+  "3c72a7c1-195c": {
+    "name": "Lamborghini Urus",
+    "description": "Automobili Lamborghini S.p.A. (Italian pronunciation: [autoˈmɔːbili lamborˈɡiːni]) is an Italian brand and manufacturer of luxury sports cars and SUVs based in Sant'Agata Bolognese. The company is owned by the Volkswagen Group through its subsidiary Audi.",
+    "imageUrl": "urus-68d.jpg",
+    "price": 250000
+  },
+  "681760cd-4964": {
+    "name": "Porsche GT3 RS",
+    "description": "The GT3 RS is a 4.0-litre, naturally-aspirated 911 whose 513bhp engine is a lot like the 911 Cup race car's. There is rose-jointed suspension like a GT2 RS (and Cup car), spring rates close to the 911 Cup's and almost as much downforce as a Cup car.",
+    "imageUrl": "porsche911_gt3_rs.jpg",
+    "price": 125000
+  },
+  "807e0628-127c": {
+    "name": "Nissan GTR R35",
+    "description": "The Nissan GT-R is a high-performance sports car and grand tourer produced by Nissan that was unveiled in 2007.[3][4][5] It is the successor to the Skyline GT-R, a high performance variant of the Nissan Skyline. Although this car was the sixth-generation model to bear the GT-R name, the model is no longer part of the Nissan Skyline model lineup since that name is now reserved for Nissan's luxury-sport vehicles. The GT-R shares the Nissan FM platform with the separate Nissan Skyline luxury car and the Nissan Z sports car. ",
+    "imageUrl": "nissan_gtr.jpg",
+    "price": 80000
   }
 }

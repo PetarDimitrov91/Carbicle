@@ -1,5 +1,4 @@
 const fs = require('fs/promises');
-
 const filePath = './services/database.json';
 
 async function read() {
@@ -11,9 +10,9 @@ async function read() {
     }
 }
 
-async function write(data) {
+async function write(carsData) {
     try {
-        await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+        await fs.writeFile(filePath, JSON.stringify(carsData, null, 2));
     } catch (err) {
         error(err, 'write');
     }
@@ -25,13 +24,25 @@ function error(err, type) {
     process.exit(1);
 }
 
-async function getAllCars() {
+async function getAllCars(query) {
     const carData = await read();
-
-    return Object
+    let cars = Object
         .entries(carData)
         .map(([id, v]) => Object.assign({}, {id}, v));
 
+    if (query.search) {
+        cars = cars.filter(c => c.name.toLowerCase().includes(query.search.toLocaleLowerCase()));
+    }
+
+    if (query.from) {
+        cars = cars.filter(c => c.price >= Number(query.from));
+    }
+
+    if (query.to) {
+        cars = cars.filter(c => c.price <= Number(query.to));
+    }
+
+    return cars;
 }
 
 async function createCar(car) {
@@ -43,7 +54,6 @@ async function createCar(car) {
     } while (cars.hasOwnProperty(id));
 
     cars[id] = car;
-
     await write(cars);
 }
 
@@ -62,11 +72,54 @@ async function getById(id) {
     }
 }
 
+async function editCar(car, id) {
+    const carsData = await read();
+
+    if (carsData[id]) {
+        const oldImageUrl = carsData[id].imageUrl;
+        if (car.imageUrl) {
+            try {
+                await fs.unlink(`./static/assets/${oldImageUrl}`);
+            } catch (err) {
+                console.log(err);
+                throw new Error(err);
+            }
+        } else {
+            car.imageUrl = oldImageUrl;
+        }
+
+        carsData[id] = car;
+        await write(carsData);
+    } else {
+        throw new Error('There is no such ID in the database');
+    }
+}
+
+async function deleteCar(id) {
+    const carsData = await read();
+
+    if (carsData[id]) {
+        try {
+            await fs.unlink(`./static/assets/${carsData[id].imageUrl}`);
+        } catch (err) {
+            console.log(err);
+            throw new Error(err);
+        }
+
+        delete carsData[id];
+        await write(carsData);
+    } else {
+        throw new Error('There is no such ID in the database')
+    }
+}
+
 module.exports = () => (req, res, next) => {
     req.storage = {
         getAllCars,
         createCar,
         getById,
+        editCar,
+        deleteCar
     };
     next();
 }
