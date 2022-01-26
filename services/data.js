@@ -24,6 +24,8 @@ function error(err, type) {
     process.exit(1);
 }
 
+/*
+
 async function getAllCars(query) {
     const carData = await read();
     let cars = Object
@@ -44,6 +46,7 @@ async function getAllCars(query) {
 
     return cars;
 }
+ */
 
 async function createCar(car) {
     const cars = await read();
@@ -115,7 +118,7 @@ async function deleteCar(id) {
 
 module.exports = () => (req, res, next) => {
     req.storage = {
-        getAllCars,
+       // getAllCars,
         createCar,
         getById,
         editCar,

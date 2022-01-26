@@ -11,8 +11,10 @@ const create = require('./controllers/create');
 const edit = require('./controllers/edit');
 const deleteCar = require('./controllers/delete');
 const carsService = require('./services/data');
+const dataService = require('./services/data_service');
 
 const app = express();
+
 
 app.engine('hbs', hbs.create({
     extname: '.hbs'
@@ -28,6 +30,7 @@ app.use(express.urlencoded({extended: true}));
 app.use('/static', express.static('static'));
 app.use('/client', express.static('client'));
 app.use(carsService());
+app.use(dataService());
 
 app.get('/', home);
 app.get('/about', about);
@@ -48,5 +51,4 @@ app.route('/delete/:id')
 app.all('*', notFound);
 
 app.listen(config.port, () => console.log(`Server listening on ${config.port}!`));
-
 
