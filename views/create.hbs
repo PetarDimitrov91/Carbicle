@@ -1,14 +1,10 @@
 <h1>Create</h1>
 <div class="form">
     <form action='/create' method="post" enctype="multipart/form-data">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name">
-        <label for="name">Description</label>
-        <textarea id="name" name="description"></textarea>
-        <label for="price">Price</label>
-        <input type="number" id="price" name="price">
-        <label for="imageUrl">Image</label>
-        <input type="file" id="imageUrl" name="imageUrl">
-        <input type="submit" value="Create">
+        <input placeholder="Price" class="create" type="text" id="name" name="name">
+        <textarea placeholder="Description" class="create" id="name" name="description"></textarea>
+        <input placeholder="Price" class="create" type="number" id="price" name="price">
+        <input class="create" type="file" id="imageUrl" name="imageUrl">
+        <input class="create" type="submit" value="Create">
     </form>
 </div>

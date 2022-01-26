@@ -1,10 +1,13 @@
+<section>
+    <img id="banner" src="static/images/banner.png" alt="Not found!">
+</section>
+
 <h1>Browser</h1>
 <form action="" method="">
     <input type="text" class="search" name="search" placeholder="Search..." value="{{query.search}}">
-    <input type="number" name="from" class="difficulty" placeholder="Price from..." value="{{query.from}}">
-    <span>-</span>
-    <input type="number" name="to" class="difficulty" placeholder="Price to..." value="{{query.to}}">
-    <input type="submit" value="search">
+    <input type="number" name="from" class="difficulty search" placeholder="Price from..." value="{{query.from}}">
+    <input type="number" name="to" class="difficulty search" placeholder="Price to..." value="{{query.to}}">
+    <input type="submit" value="search" class="search">
 </form>
 
 <div id="cars">

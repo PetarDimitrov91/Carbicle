@@ -4,50 +4,53 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
+    background-color: #E5E5E5;
 }
 
-header ul {
-    margin-left: auto;
-    margin-right: auto;
-    width: 35%;
-    height: 80px;
-    min-width:600px;
+#banner {
+    width: 100%;
 }
 
-img {
-    max-height: 200px;
+.logo {
     max-width: 200px;
-    height: 200px;
-    width: auto;
+    max-height: 100px;
+    min-width: 100px;
+    min-height: 50px;
 }
 
-img.cube {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
+
+#cars {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
 }
 
-img.logo {
-    position: relative;
-    bottom: 33px;
-    width: 80px;
-    height: 140px;
-    padding: 1em;
-    float: left;
-}
 
 header {
-    list-style-type: none;
-    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     padding: 0;
     background-color: #607588;
 }
 
-header ul li {
-    position: relative;
-    bottom: 46px;
-    display: inline-block;
-    vertical-align: middle;
+nav {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+header ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
 }
 
 header ul li a {
@@ -63,14 +66,41 @@ header ul li a:hover {
     text-decoration: underline;
 }
 
-main {
-    margin: 0 4em;
-    border-radius: 15px;
-    padding: 2em;
+.btn {
+    border-radius: 5px;
+}
+
+.cube {
+    border-radius: 5px;
+    width: 362px;
+    margin: 5px 5px;
+    border: 1px solid #2b415433;
+    background: white;
+    vertical-align: top;
+}
+
+
+img.cube {
+    display: block;
+    margin: 5px auto;
+    text-align: center;
+    max-height: 200px;
+    max-width: 350px;
+    height: 200px;
+}
+
+.cube p {
+    text-align: center;
+}
+
+img.details {
+    width: auto;
 }
 
 div.container {
     display: block;
+    width: auto;
+    margin: auto;
 }
 
 h1 {
@@ -78,13 +108,6 @@ h1 {
     text-transform: uppercase;
 }
 
-div.cube {
-    display: inline-block;
-    border: 1px solid #2b415433;
-    background: white;
-    width: 23%;
-    vertical-align: top;
-}
 
 div.cube:hover p.name {
     background: #607588;
@@ -103,14 +126,28 @@ p.name {
 button, main a.btn {
     border: none;
     padding: 8px;
+    margin-left: 5px;
+    margin-bottom: 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
     width: 43%;
-    margin: 12px;
-    margin-left: 6%;
-    border-radius: 4px;
+    background: #607588;
+    color: white;
+}
+
+.btn-dtl {
+    border-radius: 5px;
+    border: none;
+    padding: 8px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    width: 18%;
     background: #607588;
     color: white;
 }
@@ -127,10 +164,28 @@ a {
     text-transform: uppercase;
 }
 
+
+div.details > .btn-wrapper {
+    position: relative;
+    left: 20%;
+}
+
+img.details {
+    border-radius: 7px;
+    width: 53%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 div.details {
+    border-radius: 7px;
+    box-sizing: border-box;
     display: block;
-    margin: auto;
-    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 53%;
     background-color: #f3f3f2;
     padding: 1em;
 }
@@ -157,6 +212,8 @@ div.about a {
     font-weight: bold;
 }
 
+
+/*
 form label {
     background: #607588;
     color: white;
@@ -169,10 +226,9 @@ input[type=text],
 input[type=number],
 select,
 textarea {
-    width: 100%;
+    width: auto;
     display: inline-block;
     border: 1px solid #ccc;
-    box-sizing: border-box;
     padding: 12px 20px 12px 12px;
     border-radius: 0 4px 4px 4px;
     margin: 8px 0 2em;
@@ -211,6 +267,43 @@ div.form {
     padding: 20px;
     width: 36%;
     margin: auto;
+}
+ */
+.create, .edit {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    position: relative;
+    transform: translateX(50%);
+}
+
+
+.create[type=submit]:hover, .edit[type=submit]:hover {
+    background-color: #718F94;
+}
+
+.search {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    position: relative;
+    transform: translateX(50%);
+}
+
+ input[type=submit].search, input[type=submit].edit, input[type=submit].create{
+    background-color: #607588;
+}
+
+input[type=submit].search:hover{
+    background-color: #718F94;
 }
 
 span.error {
