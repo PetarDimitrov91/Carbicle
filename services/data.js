@@ -116,9 +116,11 @@ async function deleteCar(id) {
     }
 }
 
+/*
+
 module.exports = () => (req, res, next) => {
     req.storage = {
-       // getAllCars,
+        getAllCars,
         createCar,
         getById,
         editCar,
@@ -126,3 +128,5 @@ module.exports = () => (req, res, next) => {
     };
     next();
 }
+
+ */

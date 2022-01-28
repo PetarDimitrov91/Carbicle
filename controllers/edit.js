@@ -1,7 +1,6 @@
 module.exports = {
     async get(req, res) {
         const car = await req.storage.getById(req.params.id);
-
         res.render('edit', {car, title: 'edit'});
     },
     async post(req, res) {

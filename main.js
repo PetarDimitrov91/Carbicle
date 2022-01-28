@@ -1,54 +1,64 @@
 const env = process.env.NODE_ENV || 'development';
 const config = require('./config/config')[env];
+
 const express = require('express');
-const fileUpload = require('express-fileupload');
 const hbs = require('express-handlebars');
+const fileUpload = require('express-fileupload');
+
+const dbInit = require('./services/models/index.js');
+
 const {home} = require('./controllers/home');
 const {about} = require('./controllers/about');
 const {details} = require('./controllers/details');
 const {notFound} = require('./controllers/notFound');
+
 const create = require('./controllers/create');
 const edit = require('./controllers/edit');
 const deleteCar = require('./controllers/delete');
-const carsService = require('./services/data');
-const dataService = require('./services/data_service');
 
-const app = express();
+const dataService = require('./services/utils');
 
+startApp().catch(err => {
+    console.log(err);
+    process.exit(1);
+});
 
-app.engine('hbs', hbs.create({
-    extname: '.hbs'
-}).engine);
+async function startApp() {
+    await dbInit();
+    const app = express();
 
-app.set('view engine', 'hbs');
+    app.engine('hbs', hbs.create({
+        extname: '.hbs'
+    }).engine);
 
-app.use(fileUpload({
-    createParentPath: true
-}));
+    app.set('view engine', 'hbs');
 
-app.use(express.urlencoded({extended: true}));
-app.use('/static', express.static('static'));
-app.use('/client', express.static('client'));
-app.use(carsService());
-app.use(dataService());
+    app.use(fileUpload({
+        createParentPath: true
+    }));
 
-app.get('/', home);
-app.get('/about', about);
-app.get('/details/:id', details);
+    app.use(express.urlencoded({extended: true}));
+    app.use('/static', express.static('static'));
+    app.use('/client', express.static('client'));
+    app.use(dataService());
 
-app.route('/create')
-    .get(create.get)
-    .post(create.post);
+    app.get('/', home);
+    app.get('/about', about);
+    app.get('/details/:id', details);
 
-app.route('/edit/:id',)
-    .get(edit.get)
-    .post(edit.post);
+    app.route('/create')
+        .get(create.get)
+        .post(create.post);
 
-app.route('/delete/:id')
-    .get(deleteCar.get)
-    .post(deleteCar.post);
+    app.route('/edit/:id',)
+        .get(edit.get)
+        .post(edit.post);
 
-app.all('*', notFound);
+    app.route('/delete/:id')
+        .get(deleteCar.get)
+        .post(deleteCar.post);
 
-app.listen(config.port, () => console.log(`Server listening on ${config.port}!`));
+    app.all('*', notFound);
 
+    app.listen(config.port, () => console.log(`Server listening on ${config.port}!`));
+}

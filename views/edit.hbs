@@ -1,7 +1,7 @@
 {{#with car}}
     <h1>Edit</h1>
     <div class="form">
-        <form action='/edit/{{id}}' method="post" enctype="multipart/form-data">
+        <form action='/edit/{{_id}}' method="post" enctype="multipart/form-data">
             <input placeholder="Name" class="edit" type="text" id="name" name="name" value="{{name}}">
                 <textarea placeholder="Description" class="edit" id="name" name="description">{{description}}</textarea>
                 <input placeholder="Description" class="edit" type="number" id="price" name="price" value="{{price}}">
