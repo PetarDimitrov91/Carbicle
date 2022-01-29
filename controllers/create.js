@@ -6,7 +6,7 @@ module.exports = {
         try {
             let img;
 
-            if (req.files.imageUrl) {
+            if (req.files) {
                 img = req.files.imageUrl;
                 await img.mv('./static/assets/' + img.name);
             }
@@ -17,10 +17,13 @@ module.exports = {
                 imageUrl: img ? img.name : 'no-image.jpg',
                 price: Number(req.body.price)
             }
-
-            //at that moment req.storage.createCar(car) does not exist.
-            await req.storage.createCar(car);
-            res.redirect('/');
+            try {
+                await req.storage.createCar(car);
+                res.redirect('/');
+            } catch (err) {
+                console.log(err);
+                res.redirect('/create');
+            }
         } catch (err) {
             console.log(err);
             console.log('create error');

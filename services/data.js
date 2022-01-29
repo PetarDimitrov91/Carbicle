@@ -118,8 +118,6 @@ async function deleteCar(id) {
     }
 }
 
-
-
 module.exports = () => (req, res, next) => {
     req.storage = {
         getAllCars,

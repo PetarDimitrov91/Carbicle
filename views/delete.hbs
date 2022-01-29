@@ -1,16 +1,12 @@
 <h1>Delete Listing</h1>
 <div class="form">
     {{#with car}}
-        <form action="/delete/{{id}}" method="POST">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" value="{{name}}" disabled>
-            <label for="name">Description</label>
-            <textarea id="name" name="description" disabled>{{description}}</textarea>
-            <label for="image">ImageUrl</label>
-            <input type="text" id="image" name="imageUrl" value="{{imageUrl}}" disabled>
-            <label for="price">Price</label>
-            <input type="number" id="price" name="price" value="{{price}}" disabled>
-            <input type="submit" value="Confirm Delete">
+        <form action="/delete/{{_id}}" method="POST">
+            <input class="delete" type="text" id="name" name="name" value="{{name}}" disabled>
+            <textarea class="delete" id="name" name="description" disabled>{{description}}</textarea>
+            <input class="delete" type="text" id="image" name="imageUrl" value="{{imageUrl}}" disabled>
+            <input class="delete" type="number" id="price" name="price" value="{{price}}" disabled>
+            <input class="delete" type="submit" value="Confirm Delete">
         </form>
     {{/with}}
 </div>

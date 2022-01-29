@@ -1,27 +1,77 @@
 const Car = require('./models/Car');
+const fs = require('fs/promises');
 
-async function getAll(query) {
-    let cars = await Car.find({}, null, {lean: Object});
+async function getAllCars(query) {
+    const queries = {};
 
     if (query.search) {
-        cars = cars.filter(c => c.name.toLowerCase().includes(query.search.toLocaleLowerCase()));
+        queries.name = new RegExp(query.search, 'i');
     }
 
     if (query.from) {
-        cars = cars.filter(c => c.price >= Number(query.from));
+        queries.price = {$gte: Number(query.from)}
     }
 
     if (query.to) {
-        cars = cars.filter(c => c.price <= Number(query.to));
+        if (!queries.price) {
+            queries.price = {};
+        }
+        queries.price.$lte = Number(query.to);
     }
-    return cars;
+
+    return Car.find(queries, null, {lean: Object});
 }
 
-async function getById(id) {
+async function getCarById(id) {
     return Car.findById(id, null, {lean: Object});
 }
 
+async function createCar(car) {
+    await new Car(car).save();
+}
+
+async function deleteCar(id) {
+    const car = await getCarById(id);
+
+    if (car) {
+        if (car.imageUrl !== 'no-image.jpg') {
+            try {
+                await fs.unlink(`./static/assets/${car.imageUrl}`);
+            } catch (err) {
+                console.log(err);
+                throw new Error(err);
+            }
+        }
+
+        await Car.findByIdAndDelete(id);
+    } else {
+        throw new Error('There is no such ID in the database')
+    }
+}
+
+async function editCar(editedCar, id) {
+    const oldRecord = await getCarById(id);
+
+    if (editedCar.imageUrl === 'no-image.jpg') {
+        if (oldRecord.imageUrl !== 'no-image.jpg') {
+            editedCar.imageUrl = oldRecord.imageUrl;
+        }
+    } else {
+        try {
+            await fs.unlink(`./static/assets/${oldRecord.imageUrl}`);
+        } catch (err) {
+            console.log(err);
+            throw new Error(err);
+        }
+    }
+
+    await Car.findByIdAndUpdate(id, editedCar);
+}
+
 module.exports = {
-    getAll,
-    getById
+    getAllCars,
+    getCarById,
+    createCar,
+    deleteCar,
+    editCar
 }

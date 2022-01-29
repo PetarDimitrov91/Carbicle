@@ -269,7 +269,7 @@ div.form {
     margin: auto;
 }
  */
-.create, .edit {
+.create, .edit, .delete {
     width: 50%;
     padding: 12px 20px;
     margin: 8px;
@@ -282,7 +282,7 @@ div.form {
 }
 
 
-.create[type=submit]:hover, .edit[type=submit]:hover {
+.create[type=submit]:hover, .edit[type=submit]:hover, .delete[type=submit]:hover {
     background-color: #718F94;
 }
 
@@ -298,7 +298,7 @@ div.form {
     transform: translateX(50%);
 }
 
- input[type=submit].search, input[type=submit].edit, input[type=submit].create{
+ input[type=submit].search, input[type=submit].edit, input[type=submit].create, input[type=submit].delete{
     background-color: #607588;
 }
 

@@ -1,7 +1,7 @@
 module.exports = {
     async get(req, res) {
         const id = req.params.id;
-        const car = await req.storage.getById(id);
+        const car = await req.storage.getCarById(id);
 
         if (car) {
             res.render('delete', {car, title: 'Delete'});
