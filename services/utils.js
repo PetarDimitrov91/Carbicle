@@ -1,4 +1,4 @@
-const {getAll,getById} = require('./data_service');
+const {getAll,getById} = require('./dataService');
 
 module.exports = () => (req, res, next) => {
     req.storage = {

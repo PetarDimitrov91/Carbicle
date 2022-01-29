@@ -24,6 +24,7 @@ module.exports = {
                 price: Number(req.body.price)
             }
 
+            //at that moment req.storage.createCar(car) does not exist.
             await req.storage.editCar(car, id);
 
             res.redirect(`/details/${id}`);

@@ -1,3 +1,5 @@
+
+/*
 const fs = require('fs/promises');
 const filePath = './services/database.json';
 
@@ -46,7 +48,7 @@ async function getAllCars(query) {
 
     return cars;
 }
- */
+
 
 async function createCar(car) {
     const cars = await read();
@@ -116,7 +118,7 @@ async function deleteCar(id) {
     }
 }
 
-/*
+
 
 module.exports = () => (req, res, next) => {
     req.storage = {
@@ -129,4 +131,4 @@ module.exports = () => (req, res, next) => {
     next();
 }
 
- */
+*/
