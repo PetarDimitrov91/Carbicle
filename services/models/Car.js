@@ -3,8 +3,9 @@ const {Schema, model} = require('mongoose');
 const carSchema = new Schema({
     name: {
         type: String,
-        required: true,
-        minLength: 3
+        validate: function(){
+            return this.name.length >= 2;
+        }
     },
     description: {
         type: String,

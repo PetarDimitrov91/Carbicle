@@ -4,22 +4,45 @@ const fs = require('fs/promises');
 async function getAllCars(query) {
     const queries = {};
 
-    if (query.search) {
+    let {search, from, to, page, size} = query;
+
+    if (search) {
         queries.name = new RegExp(query.search, 'i');
     }
 
-    if (query.from) {
+    if (from) {
         queries.price = {$gte: Number(query.from)}
     }
 
-    if (query.to) {
+    if (to) {
         if (!queries.price) {
             queries.price = {};
         }
+
         queries.price.$lte = Number(query.to);
     }
 
-    return Car.find(queries, null, {lean: Object});
+    if (!page) {
+        page = 1
+    }
+
+    if (!size) {
+        size = 3;
+    }
+
+    const skip = (Number(page) - 1) * size;
+    const docsCount = search || from || to ? await Car.find(queries).count() : await Car.collection.countDocuments();
+    const pagesCount = Math.ceil(docsCount / size);
+
+    const cars = await Car.find(queries).lean()
+        .limit(size)
+        .skip(skip);
+
+    return {
+        cars,
+        pagesCount,
+        size
+    };
 }
 
 async function getCarById(id) {
