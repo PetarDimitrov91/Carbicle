@@ -46,7 +46,8 @@ async function getAllCars(query) {
 }
 
 async function getCarById(id) {
-    return Car.findById(id, null, {lean: Object});
+    const car = await Car.findById(id, null, {lean: Object});
+    return car;
 }
 
 async function createCar(car) {
@@ -73,7 +74,7 @@ async function deleteCar(id) {
 }
 
 async function editCar(editedCar, id) {
-    const oldRecord = await getCarById(id);
+    const oldRecord = getCarById(id);
 
     if (editedCar.imageUrl === 'no-image.jpg') {
         if (oldRecord.imageUrl !== 'no-image.jpg') {

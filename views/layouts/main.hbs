@@ -4,12 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
-    <link href="/static/style/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style/style.css" type="text/css">
     <link rel='shortcut icon' type='image/x-icon' href='/static/images/favicon.ico'/>
     <script src="/client/app.js" type="module"></script>
+    <script>
+      /*to prevent Firefox FOUC, this must be here*/
+      let FF_FOUC_FIX;
+    </script>
 </head>
 
 <body>
+
 <header>
 
         <img class="logo" src="/static/images/logo.png">
@@ -22,6 +27,7 @@
         </nav>
 
 </header>
+
 <div class="container">
     <main id="main">
         {{{body}}}

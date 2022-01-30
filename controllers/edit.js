@@ -19,6 +19,7 @@ module.exports = {
                 imageUrl: img ? img.name : 'no-image.jpg',
                 price: Number(req.body.price)
             }
+
             try {
                 await req.storage.editCar(car, id);
                 res.redirect(`/details/${id}`);
@@ -32,6 +33,5 @@ module.exports = {
             console.log('edit error');
             process.exit(1);
         }
-
     }
 }
