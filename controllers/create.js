@@ -17,6 +17,7 @@ module.exports = {
                 imageUrl: img ? img.name : 'no-image.jpg',
                 price: Number(req.body.price)
             }
+
             try {
                 await req.storage.createCar(car);
                 res.redirect('/');
@@ -24,6 +25,7 @@ module.exports = {
                 console.log(err);
                 res.redirect('/create');
             }
+
         } catch (err) {
             console.log(err);
             console.log('create error');
