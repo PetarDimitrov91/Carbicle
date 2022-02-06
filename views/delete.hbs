@@ -2,10 +2,16 @@
 <div class="form">
     {{#with car}}
         <form action="/delete/{{_id}}" method="POST">
-            <input class="delete" type="text" id="name" name="name" value="{{name}}" disabled>
+            <label for="name">
+                <input class="delete" type="text" id="name" name="name" value="{{name}}" disabled>
+            </label>
             <textarea class="delete" id="name" name="description" disabled>{{description}}</textarea>
-            <input class="delete" type="text" id="image" name="imageUrl" value="{{imageUrl}}" disabled>
-            <input class="delete" type="number" id="price" name="price" value="{{price}}" disabled>
+            <label for="image">
+                <input class="delete" type="text" id="image" name="imageUrl" value="{{imageUrl}}" disabled>
+            </label>
+            <label for="price">
+                <input class="delete" type="number" id="price" name="price" value="{{price}}" disabled>
+            </label>
             <input class="delete" type="submit" value="Confirm Delete">
         </form>
     {{/with}}

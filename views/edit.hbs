@@ -2,11 +2,15 @@
     <h1>Edit</h1>
     <div class="form">
         <form action='/edit/{{_id}}' method="post" enctype="multipart/form-data">
-            <input placeholder="Name" class="edit" type="text" id="name" name="name" value="{{name}}">
-                <textarea placeholder="Description" class="edit" id="name" name="description">{{description}}</textarea>
-                <input placeholder="Description" class="edit" type="number" id="price" name="price" value="{{price}}">
-                <input class="edit" type="file" id="imageUrl" name="imageUrl">
-                <input  class="edit" type="submit" value="Edit">
+            <label for="name">
+                <input placeholder="Name" class="edit" type="text" id="name" name="name" value="{{name}}">
+            </label>
+            <textarea placeholder="Description" class="edit" id="name" name="description">{{description}}</textarea>
+            <label for="price">
+                <input placeholder="Description" class="edit" type="number" id="price" name="price" value="{{price}}"><
+            </label>
+            <input class="edit" type="file" id="imageUrl" name="imageUrl">
+            <input class="edit" type="submit" value="Edit">
         </form>
     </div>
 {{/with}}

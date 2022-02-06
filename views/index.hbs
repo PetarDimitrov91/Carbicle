@@ -4,9 +4,15 @@
 
 <h1>Browser</h1>
 <form action="/" method="get">
-    <input type="text" class="search" name="search" placeholder="Search..." value="{{query.search}}">
-    <input type="number" name="from" class="difficulty search" placeholder="Price from..." value="{{query.from}}">
-    <input type="number" name="to" class="difficulty search" placeholder="Price to..." value="{{query.to}}">
+    <label>
+        <input type="text" class="search" name="search" placeholder="Search..." value="{{query.search}}">
+    </label>
+    <label>
+        <input type="number" name="from" class="difficulty search" placeholder="Price from..." value="{{query.from}}">
+    </label>
+    <label>
+        <input type="number" name="to" class="difficulty search" placeholder="Price to..." value="{{query.to}}">
+    </label>
     <input type="submit" value="search" class="search">
 </form>
 

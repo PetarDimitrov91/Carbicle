@@ -16,6 +16,9 @@ const create = require('./controllers/create');
 const edit = require('./controllers/edit');
 const deleteCar = require('./controllers/delete');
 
+const login = require('./controllers/login');
+const register = require('./controllers/register');
+
 const dataService = require('./services/utils');
 
 startApp().catch(err => {
@@ -57,6 +60,14 @@ async function startApp() {
     app.route('/delete/:id')
         .get(deleteCar.get)
         .post(deleteCar.post);
+
+    app.route('/login')
+        .get(login.get)
+        .post(login.post);
+
+    app.route('/register')
+        .get(register.get)
+        .post(register.post);
 
     app.all('*', notFound);
 

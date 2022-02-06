@@ -271,7 +271,7 @@ div.form {
     margin: auto;
 }
  */
-.create, .edit, .delete {
+.create, .edit, .delete, .login, .register {
     width: 50%;
     padding: 12px 20px;
     margin: 8px;
@@ -284,7 +284,7 @@ div.form {
 }
 
 
-.create[type=submit]:hover, .edit[type=submit]:hover, .delete[type=submit]:hover {
+.create[type=submit]:hover, .edit[type=submit]:hover, .delete[type=submit]:hover, .login[type=submit]:hover, .register[type=submit]:hover {
     background-color: #718F94;
 }
 
@@ -300,7 +300,7 @@ div.form {
     transform: translateX(50%);
 }
 
- input[type=submit].search, input[type=submit].edit, input[type=submit].create, input[type=submit].delete{
+ input[type=submit].search, input[type=submit].edit, input[type=submit].create, input[type=submit].delete, input[type=submit].login, input[type=submit].register{
     background-color: #607588;
 }
 
