@@ -15,7 +15,8 @@ module.exports = {
                 name: req.body.name,
                 description: req.body.description,
                 imageUrl: img ? img.name : 'no-image.jpg',
-                price: Number(req.body.price)
+                price: Number(req.body.price),
+                owner: req.session.user.id
             }
 
             try {

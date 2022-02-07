@@ -1,9 +1,9 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model, Types: {ObjectId}} = require('mongoose');
 
 const carSchema = new Schema({
     name: {
         type: String,
-        validate: function(){
+        validate: function () {
             return this.name.length >= 2;
         }
     },
@@ -13,12 +13,9 @@ const carSchema = new Schema({
             return this.description.length >= 10;
         }
     },
-    imageUrl: {
-        type: String
-    },
-    price: {
-        type: Number,
-    }
+    imageUrl: {type: String},
+    price: {type: Number,},
+    owner: {type: ObjectId, ref: 'User'}
 });
 
 const Car = model('Car', carSchema);

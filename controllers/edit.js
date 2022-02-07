@@ -1,6 +1,12 @@
 module.exports = {
     async get(req, res) {
         const car = await req.storage.getCarById(req.params.id);
+
+        if (car.owner.toString() !== req.session.user.id) {
+            console.log('User is not owner!');
+            return res.redirect('/login');
+        }
+
         res.render('edit', {car, title: 'edit'});
     },
     async post(req, res) {
@@ -21,11 +27,15 @@ module.exports = {
             }
 
             try {
-                await req.storage.editCar(car, id);
-                res.redirect(`/details/${id}`);
-            }catch(err){
+                if (await req.storage.editCar(car, id, req.session.user.id)) {
+                    res.redirect(`/details/${id}`);
+                } else {
+                    res.redirect('/login');
+                }
+
+            } catch (err) {
                 console.log(err);
-                res.redirect('/edit');
+                return res.redirect('/edit');
             }
 
         } catch (err) {

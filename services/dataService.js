@@ -27,7 +27,7 @@ async function getAllCars(query) {
     }
 
     if (!size) {
-        size = 3;
+        size = 6;
     }
 
     const skip = (Number(page) - 1) * size;
@@ -54,10 +54,14 @@ async function createCar(car) {
     await new Car(car).save();
 }
 
-async function deleteCar(id) {
+async function deleteCar(id, ownerId) {
     const car = await getCarById(id);
 
     if (car) {
+        if (car.owner.toString() !== ownerId) {
+            return false;
+        }
+
         if (car.imageUrl !== 'no-image.jpg') {
             try {
                 await fs.unlink(`./static/assets/${car.imageUrl}`);
@@ -68,13 +72,19 @@ async function deleteCar(id) {
         }
 
         await Car.findByIdAndDelete(id);
+
+        return true;
     } else {
         throw new Error('There is no such ID in the database')
     }
 }
 
-async function editCar(editedCar, id) {
-    const oldRecord = getCarById(id);
+async function editCar(editedCar, id, ownerId) {
+    const oldRecord = await getCarById(id);
+
+    if (oldRecord.owner.toString() !== ownerId) {
+        return false;
+    }
 
     if (editedCar.imageUrl === 'no-image.jpg') {
         if (oldRecord.imageUrl !== 'no-image.jpg') {
@@ -90,6 +100,7 @@ async function editCar(editedCar, id) {
     }
 
     await Car.findByIdAndUpdate(id, editedCar);
+    return true;
 }
 
 module.exports = {
